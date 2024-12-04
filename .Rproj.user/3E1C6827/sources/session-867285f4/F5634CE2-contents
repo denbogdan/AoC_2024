@@ -48,7 +48,6 @@ for(r in reports) {
     for(i in 1:length(r)) {
       #declare new vect to check
       new_r <- r
-      n = new_r[i]
       new_r[i] <- -1
       new_r <- new_r[which(new_r != -1)]
       
@@ -56,14 +55,12 @@ for(r in reports) {
       new_safe <- check_safe(new_r)
       if(new_safe) {
         safe <- new_safe
-        #print(n)
         break
       }
     }
   }
   
-  if(safe)
-    counter <- counter + 1
+  if(safe) counter <- counter + 1
 }
 
 ##Answer 2 -------------------------------------------------------------------------
