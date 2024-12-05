@@ -31,8 +31,7 @@ for(i in 5:(nrow(m_mat)-4)) {
       downr <- paste(c(m_mat[i,j], m_mat[i+1,j+1], m_mat[i+2,j+2], m_mat[i+3,j+3]), collapse = "")
       downl <- paste(c(m_mat[i,j], m_mat[i+1,j-1], m_mat[i+2,j-2], m_mat[i+3,j-3]), collapse = "")
       
-      print(c(up,down,left,right,upl,upr,downl,downr))
-      
+      #look for XMAS and count
       counter <- counter + sum(c(up,down,left,right,upl,upr,downl,downr) %in% "XMAS")
     }
   }
@@ -50,7 +49,7 @@ for(i in 5:(nrow(m_mat)-4)) {
       nw <- paste(c(m_mat[i-1,j-1], m_mat[i,j], m_mat[i+1,j+1]), collapse = "")
       ne <- paste(c(m_mat[i-1,j+1], m_mat[i,j], m_mat[i+1,j-1]), collapse = "")
       if(nw %in% c("MAS", "SAM") & ne %in% c("MAS", "SAM")) 
-        counter <- counter+1
+        counter <- counter + 1
     }
   }
 }
@@ -78,6 +77,7 @@ for(i in 5:(nrow(m_mat)-4)) {
   }
 }
 
+#dft function
 dfs <- function(node, string, depth) {
   if(depth < 4) {
     #update depth
@@ -103,7 +103,6 @@ dfs <- function(node, string, depth) {
 
 counter <- 0
 for(node in names(m_hash)) {
-  #dfs
   dfs(node, "", 0)
 }
 
