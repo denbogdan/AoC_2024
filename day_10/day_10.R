@@ -11,6 +11,7 @@ for(i in 2:length(map)) {
 m_mat <- rbind( rep(".", ncol(m_mat)), m_mat, rep(".", ncol(m_mat)))
 m_mat <- cbind( rep(".", nrow(m_mat)), m_mat, rep(".", nrow(m_mat)))
 
+
 ##Question 1 -----------------------------------------------------------------------
 
 #encode the matrix as named list of neighbours
@@ -54,6 +55,7 @@ dfs <- function(value, i, j) {
 #find all the start positions
 start_positions <- names(m_hash)[grep("^0", names(m_hash))]
 
+#loop through them and count the number of trails, and unique endpoints
 sum <- 0
 n_tails <- 0
 for(node in start_positions) {
@@ -72,7 +74,7 @@ for(node in start_positions) {
   #add to scores
   sum <- sum + length(unique(ends_visited))
   
-  #add to tails
+  #add to trails
   n_tails <- n_tails + counter
 }
 
